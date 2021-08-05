@@ -18,7 +18,6 @@ public class Method {
 			2. 입력 X / return X
 			3. 입력 X / return O
 			4. 입력 O / return X
-		
 	 */
 	
 	public int sum(int a, int b) {
@@ -28,22 +27,23 @@ public class Method {
 //	"==" 비교 연산자는 주소값을 비교하고
 //	equals() 메소드는 내용 자체를 비교 즉 데이터 값을 비교한다.
 	
-	public void say_nick(String nick) {
-	    if ("fool".equals(nick)) {
-	        return;
+	public void say_nick(String nick) throws FoolException {
+		if ("fool".equals(nick)) {
+	    	throw new FoolException();
+	    	} 
+	    	System.out.println("나의 별명은 "+nick+" 입니다.");
 	    } 
-	    System.out.println("나의 별명은 "+nick+" 입니다.");
-	}
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int a = 3;
-		int b = 4;
-		
 		Method plus = new Method();
-		int c = plus.sum(a, b);
-		
-		System.out.println(c);
+		try {
+			plus.say_nick("fool");
+			plus.say_nick("kong");
+		} catch (FoolException e) {
+	    	System.err.println("FoolException Occured");
+		}
 	}
 
 }
